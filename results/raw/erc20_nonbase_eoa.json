@@ -1,0 +1,62 @@
+{
+  "case": "erc20-nonbase-eoa",
+  "description": "ERC20 deposit via requestL2TransactionTwoBridges, ETH is base token (ERC20 is non-base), EOA recipient",
+  "function": "Bridgehub.requestL2TransactionTwoBridges",
+  "second_bridge": "L1AssetRouter (NativeTokenVault)",
+  "encoding_version": "0x01 (NEW_ENCODING_VERSION)",
+  "l1_rpc": "http://localhost:8545",
+  "l2_rpc": "http://localhost:3050",
+  "l1_chain_id": 31337,
+  "l2_chain_id": 6565,
+  "erc20_l1_address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+  "asset_id": "0x9a336f642ca26ad52c669975dfa75f0081d51f64fce02e77da7cc91f6873904f",
+  "l1_gas_price_gwei": 1.000000008,
+  "l2_gas_per_pubdata_byte_limit": 800,
+  "prerequisites": [
+    "NTV.registerToken(erc20) — one-time per token, gasUsed=288269",
+    "ERC20.approve(NTV, amount) — per depositor"
+  ],
+  "runs": [
+    {
+      "run": 1,
+      "subcase": "first-deposit",
+      "description": "First deposit of this ERC20 — includes token metadata (name, symbol, decimals) in L2 calldata",
+      "tx_hash": "0xb60dd1477267f9a887e03c42caa74beac02dfaf36493f03c701d8902038d7584",
+      "l1_block": 161,
+      "l1_gas_used": 511312,
+      "l2_gas_limit_used": 200000,
+      "base_cost_wei": "52500000000000",
+      "amount_wei": "1000000000000000000",
+      "status": 1
+    },
+    {
+      "run": 2,
+      "subcase": "subsequent-deposit",
+      "description": "Subsequent deposit — token already registered in NTV, no metadata calldata",
+      "l1_block": 162,
+      "l1_gas_used": 449138,
+      "l2_gas_limit_used": 300000,
+      "base_cost_wei": "78750000000000",
+      "amount_wei": "100000000000000000",
+      "status": 1
+    },
+    {
+      "run": 3,
+      "subcase": "subsequent-deposit",
+      "description": "Subsequent deposit",
+      "l1_block": 163,
+      "l1_gas_used": 449139,
+      "l2_gas_limit_used": 300000,
+      "base_cost_wei": "78750000000000",
+      "amount_wei": "100000000000000000",
+      "status": 1
+    }
+  ],
+  "first_deposit_l1_gas_used": 511312,
+  "subsequent_deposit_l1_gas_used_avg": 449139,
+  "gas_overhead_vs_eth_deposit": {
+    "first_deposit_overhead": 226731,
+    "subsequent_deposit_overhead": 164558,
+    "note": "Overhead relative to eth-base-eoa median (284581)"
+  }
+}

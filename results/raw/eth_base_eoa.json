@@ -1,0 +1,55 @@
+{
+  "case": "eth-base-eoa",
+  "description": "ETH deposit via requestL2TransactionDirect, ETH is base token, EOA recipient",
+  "function": "Bridgehub.requestL2TransactionDirect",
+  "l1_rpc": "http://localhost:8545",
+  "l2_rpc": "http://localhost:3050",
+  "l1_chain_id": 31337,
+  "l2_chain_id": 6565,
+  "l1_gas_price_gwei": 1.000000008,
+  "l2_gas_per_pubdata_byte_limit": 800,
+  "min_l2_gas_limit": 71875,
+  "base_cost_at_min_wei": "18867187500000",
+  "base_cost_at_test_wei": "21000000000000",
+  "l2_gas_limit_used_for_deposit": 80000,
+  "l2_value_wei": "21000",
+  "runs": [
+    {
+      "run": 1,
+      "tx_hash": "0x7050c669c3aa8045231a15f5fb7bcfec110b0721b71b8cca5eaf0351607272f9",
+      "l1_block": 146,
+      "l1_gas_used": 284581,
+      "status": 1,
+      "mint_value_wei": "10021000000000000",
+      "notes": "First actual deposit, prior session"
+    },
+    {
+      "run": 2,
+      "tx_hash": "0x2895c64cd90eefddba6b316a95969aa3cf7e8a895b470aaadd9b159a9f3e1cfd",
+      "l1_block": 151,
+      "l1_gas_used": 279447,
+      "status": 1,
+      "mint_value_wei": "21021000000000000"
+    },
+    {
+      "run": 3,
+      "tx_hash": "0x8d030a49a289234c4147ff814568899cb0879b156da9a100458da4ce0bfe3ecb",
+      "l1_block": 152,
+      "l1_gas_used": 335126,
+      "status": 1,
+      "mint_value_wei": "21021000000000000",
+      "notes": "Higher due to priority queue state growth"
+    }
+  ],
+  "l1_gas_used_median": 284581,
+  "l1_gas_used_avg": 299718,
+  "l1_gas_used_min": 279447,
+  "l1_gas_used_max": 335126,
+  "sensitivity_curve": {
+    "50000": {"pass": false, "base_cost_wei": "13125000000000"},
+    "70000": {"pass": false, "base_cost_wei": "18375000000000"},
+    "71875": {"pass": true,  "base_cost_wei": "18867187500000"},
+    "80000": {"pass": true,  "base_cost_wei": "21000000000000"},
+    "100000": {"pass": true, "base_cost_wei": "26250000000000"}
+  }
+}

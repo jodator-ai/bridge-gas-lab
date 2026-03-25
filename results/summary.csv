@@ -1,0 +1,5 @@
+case,subcase,function,l1_gas_used_median,l1_gas_used_min,l1_gas_used_max,l1_gas_used_n,min_l2_gas_limit,l2_gas_limit_recommended,base_cost_wei_at_rec,l1_gas_price_gwei,notes
+eth-base-eoa,eoa-recipient,requestL2TransactionDirect,284581,279447,335126,3,71875,80000,21000000000000,1.000,"ETH deposit; ETH is base token; EOA recipient"
+erc20-nonbase-first,erc20-first-deposit,requestL2TransactionTwoBridges,511312,511312,511312,1,unknown,200000,52500000000000,1.000,"First ERC20 deposit; includes token metadata in L2 calldata; token registered in NTV prior"
+erc20-nonbase-existing,erc20-subsequent-deposit,requestL2TransactionTwoBridges,449139,449138,449139,2,unknown,300000,78750000000000,1.000,"Subsequent ERC20 deposit; no token metadata; token already registered"
+eth-base-contract,contract-recipient,requestL2TransactionDirect,N/A,N/A,N/A,0,N/A,N/A,N/A,N/A,"BLOCKED: L2 contract (PayableReceiver) could not be deployed — L2 ETH balance 0"
