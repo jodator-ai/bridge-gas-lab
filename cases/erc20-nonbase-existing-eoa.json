@@ -1,0 +1,12 @@
+{
+  "case_id": "erc20-nonbase-existing-eoa",
+  "route": "erc20-nonbase-existing",
+  "description": "ERC20 deposit via requestL2TransactionTwoBridges — token already deployed on L2",
+  "recipient_kind": "eoa",
+  "token_mode": "existing",
+  "deposit_amount": 1000000000000000000,
+  "deposit_amount_label": "1 token (18 decimals)",
+  "recipient": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+  "token_address": "DEPLOY_TEST_ERC20",
+  "_note": "requires preparatory first-deposit run before measurement; token_address populated at runtime"
+}

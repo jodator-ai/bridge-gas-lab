@@ -1,0 +1,11 @@
+{
+  "case_id": "eth-base-contract",
+  "route": "eth-base",
+  "description": "ETH deposit via requestL2TransactionDirect to payable contract recipient",
+  "recipient_kind": "payable_contract",
+  "token_mode": "na",
+  "deposit_amount": 10000000000000000,
+  "deposit_amount_label": "0.01 ETH",
+  "recipient": "DEPLOY_PAYABLE_CONTRACT",
+  "_note": "recipient address is populated at runtime after deploying the payable receiver contract"
+}

@@ -1,0 +1,12 @@
+{
+  "case_id": "erc20-base-eoa",
+  "route": "erc20-base",
+  "description": "ERC20 deposit via requestL2TransactionDirect (chain base token = ERC20) to EOA",
+  "recipient_kind": "eoa",
+  "token_mode": "base",
+  "deposit_amount": 1000000000000000000,
+  "deposit_amount_label": "1 token (18 decimals)",
+  "recipient": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+  "token_address": "DEPLOY_TEST_ERC20",
+  "_note": "token_address populated at runtime; requires an L2 chain whose base token is the ERC20"
+}

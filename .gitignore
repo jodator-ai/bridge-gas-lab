@@ -1,0 +1,27 @@
+# Lab runtime artifacts — not committed
+repos/
+.build/
+.pids/
+.logs/
+.server_binary_path
+
+# Raw results and decompressed state — kept locally
+results/raw/*.json
+results/summary.csv
+results/recommendation-matrix.md
+
+# Keep gitkeep files
+!results/.gitkeep
+!results/raw/.gitkeep
+
+# Solidity build artifacts
+out/
+cache/
+artifacts/
+
+# Decompressed snapshots
+*.json.gz.decompressed
+l1-state.json
+
+# OS
+.DS_Store

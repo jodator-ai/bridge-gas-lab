@@ -1,0 +1,12 @@
+{
+  "case_id": "eth-nonbase-eoa",
+  "route": "eth-nonbase",
+  "description": "ETH deposit via requestL2TransactionTwoBridges to EOA (chain base token is not ETH)",
+  "recipient_kind": "eoa",
+  "token_mode": "na",
+  "deposit_amount": 10000000000000000,
+  "deposit_amount_label": "0.01 ETH",
+  "recipient": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+  "token_address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+  "_note": "token_address is ETH sentinel; route is TwoBridges because chain base token != ETH"
+}

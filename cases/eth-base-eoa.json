@@ -1,0 +1,10 @@
+{
+  "case_id": "eth-base-eoa",
+  "route": "eth-base",
+  "description": "ETH deposit via requestL2TransactionDirect to EOA recipient",
+  "recipient_kind": "eoa",
+  "token_mode": "na",
+  "deposit_amount": 10000000000000000,
+  "deposit_amount_label": "0.01 ETH",
+  "recipient": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}
