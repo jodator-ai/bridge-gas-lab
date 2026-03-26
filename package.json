@@ -1,0 +1,14 @@
+{
+  "name": "bridge-gas-lab",
+  "private": true,
+  "scripts": {
+    "test:local":   "PROFILE=local  SCENARIO=preview npx tsx scripts/prividium-test.ts",
+    "discover:local": "PROFILE=local  SCENARIO=discover npx tsx scripts/prividium-test.ts",
+    "test:live":    "PROFILE=live   SCENARIO=preview npx tsx scripts/prividium-test.ts"
+  },
+  "dependencies": {
+    "ethers": "^5.7.0",
+    "tsx": "^4.0.0",
+    "zksync-ethers": "^5.9.0"
+  }
+}
