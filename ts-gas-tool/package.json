@@ -1,0 +1,19 @@
+{
+  "name": "zksync-bridge-gas-params",
+  "version": "1.0.0",
+  "description": "Gas parameter helper for ZKsync L1→L2 bridge deposits via zksync-ethers",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "ethers": "^5.7.0",
+    "zksync-ethers": "^5.9.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}
