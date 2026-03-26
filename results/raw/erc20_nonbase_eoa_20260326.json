@@ -1,0 +1,43 @@
+{
+  "case": "erc20-nonbase-eoa",
+  "run_date": "2026-03-26",
+  "session": "extended-N5",
+  "description": "ERC20 deposit via requestL2TransactionTwoBridges. N=5 (1 first-deposit + 4 subsequent) plus N=3 from prior session.",
+  "l1_gas_price_gwei": 1.000000008,
+  "l2_gas_per_pubdata_byte_limit": 800,
+  "erc20_l1_address": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+  "asset_id": "0xfd8b5b17715cafcd5fabc90cd08a6e731636c6404d4a60852d7612ef36418202",
+  "runs_current_session": [
+    {
+      "run": 1,
+      "subcase": "first-deposit",
+      "l1_block": 155,
+      "l1_gas_used": 511325,
+      "l2_gas_limit_used": 200000,
+      "base_cost_wei": "52500000000000",
+      "note": "fresh token, includes name/symbol/decimals in L2 calldata"
+    },
+    {"run": 2, "subcase": "subsequent", "l1_block": 156, "l1_gas_used": 449151, "l2_gas_limit_used": 300000},
+    {"run": 3, "subcase": "subsequent", "l1_block": 157, "l1_gas_used": 444064, "l2_gas_limit_used": 300000},
+    {"run": 4, "subcase": "subsequent", "l1_block": 158, "l1_gas_used": 501642, "l2_gas_limit_used": 300000, "note": "spike, likely queue depth"},
+    {"run": 5, "subcase": "subsequent", "l1_block": 159, "l1_gas_used": 451711, "l2_gas_limit_used": 300000}
+  ],
+  "all_first_deposit_runs": [511312, 511325],
+  "all_subsequent_runs": [449138, 449139, 449151, 444064, 501642, 451711],
+  "statistics_first_deposit": {
+    "n": 2,
+    "min": 511312,
+    "max": 511325,
+    "mean": 511319,
+    "note": "very stable — token metadata is fixed size"
+  },
+  "statistics_subsequent": {
+    "n": 6,
+    "min": 444064,
+    "max": 501642,
+    "median": 449145,
+    "mean": 457474,
+    "cv_pct": 4.4,
+    "note": "~10% spike on run 4 consistent with priority queue depth effect"
+  }
+}

@@ -113,3 +113,24 @@ baseCost at min: 18,867,187,500,000 wei (≈18.9 Gwei-equivalent overhead)
 - Address discovery is always re-run after each lab reset
 - Diamond proxy fixed: settlementLayer=address(0), l2DACommitmentScheme=3 (F-001, F-002)
 - The `erc20-nonbase-existing-eoa` case requires a preparatory deposit before measurement
+
+### F-008 — Priority queue depth causes L1 gas variance up to 20%
+- **Date**: 2026-03-26
+- **Phase**: eth-base-eoa N=10 extended measurement
+- **Finding**: At N=10, gasUsed ranges from 279,447 to 337,026 (±20% from median). The two high-gas runs (6, 3) occurred when the priority queue had several unprocessed txs. After the L2 server caught up and executed batches, gas stabilized at ~287,095.
+- **Impact**: Median (N=3) was 284,581, N=10 median is 287,095 — within 1%. P90 ≈ 320,000. Use 30% safety margin for production budgets.
+- **Action**: Updated recommendation matrix to use P90-based budgets. Added queue depth note to matrix.
+
+### F-009 — ERC20 subsequent deposit variance also follows queue depth
+- **Date**: 2026-03-26
+- **Phase**: erc20-nonbase N=5 extended measurement
+- **Finding**: ERC20 subsequent deposits show similar queue-depth variance: min=444,064, max=501,642 (13% range). One spike (+52K gas) on run 4. Median=449,145.
+- **Impact**: Budget with 30% margin: 585,000 gas for subsequent ERC20 deposits.
+- **Action**: Updated statistics and recommendation matrix in ANALYSIS.md.
+
+### F-010 — ZKsync SSO smart accounts receive deposits identically to EOAs
+- **Date**: 2026-03-26
+- **Phase**: analysis (not measured, architectural finding)
+- **Finding**: L1→L2 priority txs bypass ZKsync account validation (`validateTransaction` is not called by the bootloader for priority txs). ETH/token credits happen via direct storage writes (ETH balance) or L2 NTV `bridgeMint`. Recipient account type (EOA, SSO smart account, multisig) has NO effect on L1 gasUsed or l2GasLimit requirements.
+- **Impact**: SSO accounts can be listed as deposit recipients in bridge UIs with no additional budgeting.
+- **Action**: Documented in ANALYSIS.md §4.

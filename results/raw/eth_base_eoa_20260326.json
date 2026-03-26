@@ -1,0 +1,37 @@
+{
+  "case": "eth-base-eoa",
+  "run_date": "2026-03-26",
+  "session": "extended-N10",
+  "description": "ETH deposit via requestL2TransactionDirect, ETH is base token, EOA recipient. N=10 combined with prior session N=3.",
+  "l1_gas_price_gwei": 1.000000008,
+  "l2_gas_per_pubdata_byte_limit": 800,
+  "l2_gas_limit_used": 80000,
+  "mint_value_wei": "21021000000000",
+  "l2_value_wei": "21000",
+  "runs": [
+    {"run": 1,  "session": "prior",   "l1_block": 146, "l1_gas_used": 284581, "note": "prior session"},
+    {"run": 2,  "session": "prior",   "l1_block": 151, "l1_gas_used": 279447, "note": "prior session"},
+    {"run": 3,  "session": "prior",   "l1_block": 152, "l1_gas_used": 335126, "note": "prior session, higher due to queue depth"},
+    {"run": 4,  "session": "current", "l1_block": 138, "l1_gas_used": 284534},
+    {"run": 5,  "session": "current", "l1_block": 139, "l1_gas_used": 279447},
+    {"run": 6,  "session": "current", "l1_block": 140, "l1_gas_used": 337026, "note": "spike, queue depth"},
+    {"run": 7,  "session": "current", "l1_block": 141, "l1_gas_used": 287095},
+    {"run": 8,  "session": "current", "l1_block": 142, "l1_gas_used": 287095},
+    {"run": 9,  "session": "current", "l1_block": 143, "l1_gas_used": 287096},
+    {"run": 10, "session": "current", "l1_block": 144, "l1_gas_used": 287095}
+  ],
+  "statistics": {
+    "n": 10,
+    "min": 279447,
+    "max": 337026,
+    "median": 287095,
+    "mean": 294854,
+    "p25": 284534,
+    "p75": 287096,
+    "std_approx": 18500,
+    "cv_pct": 6.3
+  },
+  "min_l2_gas_limit": 71875,
+  "base_cost_at_min_wei": "18867187500000",
+  "base_cost_at_test_wei": "21000000000000"
+}
